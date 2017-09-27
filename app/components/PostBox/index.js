@@ -31,8 +31,8 @@ class PostBox extends Component {
         <TouchableOpacity
           onPress={() => this.registerBook()}
         >
-          <View>
-            <Text>Add</Text>
+          <View style={styles.buttonContainer}>
+            <Text style={styles.buttonText}>Add</Text>
           </View>
         </TouchableOpacity>
       </View>

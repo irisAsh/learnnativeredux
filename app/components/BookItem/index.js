@@ -21,12 +21,14 @@ class BookItem extends Component {
           <Text style={styles.bookName}>
             {this.props.name}
           </Text>
-          <Text style={styles.bookAuthor}>
-            {this.props.author}
-          </Text>
-          <Text style={styles.bookGenre}>
-            {this.props.genre}
-          </Text>
+          <View style={styles.subtitle}>
+            <Text style={styles.bookAuthor}>
+              {this.props.author}
+            </Text>
+            <Text style={styles.bookGenre}>
+              {this.props.genre}
+            </Text>
+          </View>
         </View>
       </TouchableOpacity>
     )
