@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 import styles from './styles'
 import { deleteBook } from '../../actions'
 
-class Book extends Component {
+class BookItem extends Component {
   render() {
     console.log(this.props)
     return (
@@ -38,9 +38,9 @@ class Book extends Component {
 }
 
 // Providerからdispatchのみを取得
-export default const BookItem = connect()(Book)
+export default connect()(BookItem)
 
-Book.propTypes = {
+BookItem.propTypes = {
   name: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,

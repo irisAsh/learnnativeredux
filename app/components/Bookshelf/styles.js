@@ -6,18 +6,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'stretch',
   },
-  input: {
-    height: 26,
-    padding: 4,
-    paddingLeft: 8,
-    borderRadius: 8,
-    backgroundColor: 'white',
-  },
-  inputContainer: {
-    padding: 8,
-    paddingTop: 0,
-    backgroundColor: '#2ecc71',
-  },
   title: {
     color: 'white',
     fontSize: 20,

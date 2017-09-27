@@ -18,3 +18,5 @@ const styles = StyleSheet.create({
   bookGenre: {
   },
 })
+
+export default styles
