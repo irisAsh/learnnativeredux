@@ -7,15 +7,13 @@ export const DELETE_BOOK = 'DELETE_BOOK'
 /*
  * Action creater
  */
-export const registerBook = (book) => {
-  return {
+export const registerBook = (name, author, genre) => ({
     type: REGISTER_BOOK,
-    book,
-  }
-}
-export const deleteBook = (id) => {
-  return {
-    type: DELETE_BOOK,
-    id,
-  }
-}
+    name,
+    author,
+    genre,
+})
+export const deleteBook = (id) => ({
+  type: DELETE_BOOK,
+  id,
+})

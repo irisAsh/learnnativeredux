@@ -1,64 +1,40 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import {
-  ScrollView,
+  Button,
   StatusBar,
   Text,
-  TextInput,
-  TouchableOpacity,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
 
-import BookItem from '../BookItem'
+import BookItems from '../BookItems'
 import PostBox from '../PostBox'
 import styles from './styles'
 
-export class Bookshelf extends Component {
-  constructor(props) {
-    super(props)
-  }
+const Bookshelf = ({ navigation }) => (
+  <View style={styles.container}>
+    <StatusBar barStyle='light-content' />
+    <View style={styles.topBar}>
+      <Text style={styles.title}>
+        Bookshelf
+      </Text>
+    </View>
+    <PostBox />
+    <BookItems />
+    <Button
+      onPress={() => navigation.dispatch({ type: 'Back' })}
+      title='Home'
+    />
+  </View>
+)
 
-  render() {
-    const renderBooks = () => {
-      console.log(this.props)
-      return this.props.books.map((item) => {
-        console.log(item)
-        return (
-          <BookItem
-            {...item.book}
-            key={item.id}
-            id={item.id}
-          />
-        )
-      })
-    }
-
-    return (
-      <View style={styles.container}>
-        <StatusBar barStyle='light-content' />
-        <View style={styles.topBar}>
-          <Text style={styles.title}>
-            Bookshelf
-          </Text>
-        </View>
-        <PostBox />
-        <ScrollView
-          automaticallyAdjustContentInsets={false}
-        >
-          {renderBooks()}
-        </ScrollView>
-      </View>
-    )
-  }
-
+Bookshelf.propTypes = {
+  navigation: PropTypes.object.isRequired,
 }
 
-const mapStateToProps = (state) => {
-  console.log(state)
-  return {
-    books: state.books,
-  }
+Bookshelf.navigationOptions = {
+  header: null,
 }
 
-// Providerからdispatch, state(books)を取得
-export default connect(mapStateToProps)(Bookshelf)
+export default connect()(Bookshelf)

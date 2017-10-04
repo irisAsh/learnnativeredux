@@ -2,15 +2,13 @@ import React, { Component } from 'react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-import { configureStore } from './store'
-import Bookshelf from './components/Bookshelf'
+import AppWithNavigationState from './navigators/AppNavigator'
+import AppReducer from './reducers'
 
-export default class App extends Component {
-  render() {
-    return (
-      <Provider store={configureStore()}>
-        <Bookshelf />
-      </Provider>
-    )
-  }
-}
+const App = () => (
+  <Provider store={createStore(AppReducer)}>
+    <AppWithNavigationState />
+  </Provider>
+)
+
+export default App

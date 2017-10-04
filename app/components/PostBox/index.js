@@ -43,7 +43,6 @@ class PostBox extends Component {
     return (
       <TextInput
         onChange={(event) => {
-          console.log(event.nativeEvent)
           this.setState({
             [key]: event.nativeEvent.text,
           })
@@ -64,8 +63,7 @@ class PostBox extends Component {
         author: '',
         genre: '',
       })
-      let book = { name, author, genre, }
-      this.props.dispatch(registerBook(book))
+      this.props.dispatch(registerBook(name, author, genre))
     }
   }
 }
