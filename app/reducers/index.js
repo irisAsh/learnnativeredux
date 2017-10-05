@@ -7,6 +7,7 @@ import {
   DELETE_BOOK,
 } from '../actions/index'
 import { AppNavigator } from '../navigators/AppNavigator'
+import { screenData } from '../data/screenData'
 
 const firstAction = AppNavigator.router.getActionForPathAndParams('HomeScreen')
 const tempNavState = AppNavigator.router.getStateForAction(firstAction)
@@ -21,14 +22,15 @@ const nav = (state = initialNavState, action) => {
         state
       )
       break
-    case 'Bookshelf':
-      nextState = AppNavigator.router.getStateForAction(
-        NavigationActions.navigate({ routeName: 'Bookshelf'}),
-        state
-      )
-      break
     default:
-      nextState = AppNavigator.router.getStateForAction(action, state)
+      if (screenData.findIndex(e => e.screen === action.type) > -1 ) {
+        nextState = AppNavigator.router.getStateForAction(
+          NavigationActions.navigate({ routeName: action.type}),
+          state
+        )
+      } else {
+        nextState = AppNavigator.router.getStateForAction(action, state)
+      }
       break
   }
 
