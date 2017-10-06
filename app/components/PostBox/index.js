@@ -6,67 +6,53 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { connect } from 'react-redux'
 
 import styles from './styles'
-import { registerBook } from '../../actions/bookshelfActionCreators'
+import TextBox from '../TextBox'
 
-class PostBox extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: '',
-      author: '',
-      genre: '',
-    }
-  }
-
-  render() {
-    return (
-      <View style={styles.inputContainer}>
-        {this.renderTextInput('name', 'Book Name')}
-        {this.renderTextInput('author', 'Author')}
-        {this.renderTextInput('genre', 'Genre')}
-
-        <TouchableOpacity
-          onPress={() => this.registerBook()}
-        >
-          <View style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>Add</Text>
-          </View>
-        </TouchableOpacity>
+const PostBox = ({
+  postBookName,
+  postAuthor,
+  postGenre,
+  changePostBookName,
+  changePostAuthor,
+  changePostGenre,
+  registerBook,
+}) => (
+  <View style={styles.inputContainer}>
+    <TextBox
+      placeholder='Book Name'
+      value={postBookName}
+      onChange={event => changePostBookName(event.nativeEvent.text)}
+    />
+    <TextBox
+      placeholder='Author'
+      value={postAuthor}
+      onChange={event => changePostAuthor(event.nativeEvent.text)}
+    />
+    <TextBox
+      placeholder='Genre'
+      value={postGenre}
+      onChange={event => changePostGenre(event.nativeEvent.text)}
+    />
+    <TouchableOpacity
+      onPress={() => registerBook()}
+    >
+      <View style={styles.buttonContainer}>
+        <Text style={styles.buttonText}>Add</Text>
       </View>
-    )
-  }
+    </TouchableOpacity>
+  </View>
+)
 
-  renderTextInput = (key, placeholder = '') => {
-    return (
-      <TextInput
-        onChange={(event) => {
-          this.setState({
-            [key]: event.nativeEvent.text,
-          })
-        }}
-        placeholder={placeholder}
-        returnKeyType='done'
-        style={styles.input}
-        value={this.state[key]}
-      />
-    )
-  }
-
-  registerBook = () => {
-    const { name, author, genre, } = this.state
-    if (name && name != '') {
-      this.setState({
-        name: '',
-        author: '',
-        genre: '',
-      })
-      this.props.dispatch(registerBook(name, author, genre))
-    }
-  }
+PostBox.propTypes = {
+  postBookName: PropTypes.string.isRequired,
+  postAuthor: PropTypes.string.isRequired,
+  postGenre: PropTypes.string.isRequired,
+  changePostBookName: PropTypes.func.isRequired,
+  changePostAuthor: PropTypes.func.isRequired,
+  changePostGenre: PropTypes.func.isRequired,
+  registerBook: PropTypes.func.isRequired,
 }
 
-// Providerからdispatchのみを取得
-export default connect()(PostBox)
+export default PostBox

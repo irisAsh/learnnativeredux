@@ -9,7 +9,7 @@ import {
 
 import styles from './styles'
 import BookItems from '../../containers/BookItemsContainer'
-import PostBox from '../PostBox'
+import PostBox from '../../containers/PostBoxContainer'
 
 const Bookshelf = ({ navigation }) => (
   <View style={styles.container}>
