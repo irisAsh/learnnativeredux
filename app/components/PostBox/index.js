@@ -36,7 +36,7 @@ const PostBox = ({
       onChange={event => changePostGenre(event.nativeEvent.text)}
     />
     <TouchableOpacity
-      onPress={() => registerBook(postBookName, postAuthor, postBookName)}
+      onPress={() => registerBook(postBookName, postAuthor, postGenre)}
     >
       <View style={styles.buttonContainer}>
         <Text style={styles.buttonText}>Add</Text>
