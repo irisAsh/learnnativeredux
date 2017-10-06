@@ -4,9 +4,9 @@ import PostBox from '../components/PostBox'
 import * as Actions from '../actions/bookshelfActionCreators'
 
 const mapStateToProps = state => ({
-  postBookName: state.bookshelfReducer.postBookName,
-  postAuthor: state.bookshelfReducer.postAuthor,
-  postGenre: state.bookshelfReducer.postGenre,
+  postBookName: state.bookshelf.postBookName,
+  postAuthor: state.bookshelf.postAuthor,
+  postGenre: state.bookshelf.postGenre,
 })
 
 const mapDispatchToProps = dispatch => (

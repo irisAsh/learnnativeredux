@@ -4,7 +4,7 @@ import BookItems from '../components/BookItems'
 import * as Actions from '../actions/bookshelfActionCreators'
 
 const mapStateToProps = state => ({
-  books: state.bookshelfReducer.books,
+  books: state.bookshelf.books,
 })
 
 const mapDispatchToProps = dispatch => (

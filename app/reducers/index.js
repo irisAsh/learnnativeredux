@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 
-import nav from './nav'
-import bookshelfReducer from './bookshelfReducer'
+import nav from './navigationReducer'
+import bookshelf from './bookshelfReducer'
 
 const AppReducer = combineReducers({
   nav,
-  bookshelfReducer,
+  bookshelf,
 });
 
 export default AppReducer;

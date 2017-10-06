@@ -20,9 +20,9 @@ const bookshelfReducer = (state = initialBooksState, action) => {
           ...state.books,
           {
             id: uuid.v4(),
-            name: state.postBookName,
-            author: state.postAuthor,
-            genre: state.postGenre,
+            name: action.name,
+            author: action.author,
+            genre: action.genre,
           },
         ],
         postBookName: '',
