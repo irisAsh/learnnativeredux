@@ -6,19 +6,17 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { connect } from 'react-redux'
 
 import styles from './styles'
-import { deleteBook } from '../../actions'
 
-const BookItems = ({ books, deleteItem }) => (
+const BookItems = ({ books, deleteBook }) => (
   <ScrollView
     automaticallyAdjustContentInsets={false}
   >
     { books.map(book => (
         <TouchableOpacity
           key={book.id}
-          onPress={() => deleteItem(book.id)}
+          onPress={() => deleteBook(book.id)}
         >
           <View style={styles.bookContainer}>
             <Text style={styles.bookName}>
@@ -46,14 +44,7 @@ BookItems.propTypes = {
     author: PropTypes.string,
     genre: PropTypes.string,
   })).isRequired,
+  deleteBook: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = (state) => ({
-  books: state.arrangeBooks.books,
-})
-
-const mapDispatchToProps = dispatch => ({
-  deleteItem: (id) => dispatch(deleteBook(id)),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(BookItems)
+export default BookItems

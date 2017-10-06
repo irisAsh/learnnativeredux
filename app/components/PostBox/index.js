@@ -9,7 +9,7 @@ import {
 import { connect } from 'react-redux'
 
 import styles from './styles'
-import { registerBook } from '../../actions'
+import { registerBook } from '../../actions/bookshelfActionCreators'
 
 class PostBox extends Component {
   constructor(props) {

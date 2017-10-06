@@ -6,11 +6,10 @@ import {
   Text,
   View,
 } from 'react-native'
-import { connect } from 'react-redux'
 
-import BookItems from '../BookItems'
-import PostBox from '../PostBox'
 import styles from './styles'
+import BookItems from '../../containers/BookItemsContainer'
+import PostBox from '../PostBox'
 
 const Bookshelf = ({ navigation }) => (
   <View style={styles.container}>
@@ -37,4 +36,4 @@ Bookshelf.navigationOptions = {
   header: null,
 }
 
-export default connect()(Bookshelf)
+export default Bookshelf
