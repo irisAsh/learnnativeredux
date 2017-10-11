@@ -5,21 +5,19 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native'
-import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
 
 import styles from './styles'
 
-const ScreenList = ({ navigate, screenData }) => (
+const ScreenList = ({ navigate, routes }) => (
   <View>
-    { screenData.map((elem, index) => (
+    { Object.keys(routes).map(routeName => (
         <TouchableOpacity
-          key={index}
-          onPress={() => navigate(elem.screen)}
+          key={routeName}
+          onPress={() => navigate(routeName)}
         >
           <View style={styles.container}>
-            <Text style={styles.title}>{elem.screen}</Text>
-            <Text style={styles.description}>{elem.description}</Text>
+            <Text style={styles.title}>{routes[routeName].title}</Text>
+            <Text style={styles.description}>{routes[routeName].description}</Text>
           </View>
         </TouchableOpacity>
       ))
@@ -29,14 +27,10 @@ const ScreenList = ({ navigate, screenData }) => (
 
 ScreenList.propTypes = {
   navigate: PropTypes.func.isRequired,
-  screenData: PropTypes.arrayOf(PropTypes.shape({
-    screen: PropTypes.string,
+  routes: PropTypes.objectOf(PropTypes.shape({
+    title: PropTypes.string,
     description: PropTypes.string,
   })).isRequired,
 }
 
-const mapDispatchToProps = dispatch => ({
-  navigate: (screen) => dispatch({ type: screen }),
-})
-
-export default connect(null, mapDispatchToProps)(ScreenList)
+export default ScreenList

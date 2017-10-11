@@ -1,23 +1,22 @@
 import React from 'react'
 import { View, ScrollView } from 'react-native'
 
-import ScreenList from '../ScreenList'
-import { screenData } from '../../data/screenData'
+import { AppRoutes } from '../../navigators/AppNavigator'
+import ScreenList from '../../containers/ScreenListContainer'
+import Header from '../Header'
+import styles from './styles'
 
 const HomeScreen = () => (
-  <View>
+  <View style={styles.container}>
+    <Header />
     <ScrollView
       automaticallyAdjustContentInsets={false}
     >
       <ScreenList
-        screenData={screenData}
+        routes={AppRoutes}
       />
     </ScrollView>
   </View>
 )
-
-HomeScreen.navigationOptions = {
-  title: 'Home',
-}
 
 export default HomeScreen

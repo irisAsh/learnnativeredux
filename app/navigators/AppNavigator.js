@@ -7,11 +7,31 @@ import HomeScreen from '../components/HomeScreen'
 import Bookshelf from '../components/Bookshelf'
 import WeatherApp from '../components/WeatherApp'
 
-export const AppNavigator = StackNavigator({
-  HomeScreen: { screen: HomeScreen },
-  Bookshelf: { screen: Bookshelf },
-  WeatherApp: { screen: WeatherApp },
-})
+export const AppRoutes = {
+  WeatherApp: {
+    screen: WeatherApp,
+    title: 'WeatherApp',
+    description: 'お天気検索アプリサンプル',
+  },
+  Bookshelf: {
+    screen: Bookshelf,
+    title: '本棚',
+    description: '本を登録してリストに表示するサンプル',
+  },
+}
+
+export const AppNavigator = StackNavigator(
+  {
+    ...AppRoutes,
+    HomeScreen: {
+      screen: HomeScreen
+    },
+  },
+  {
+    initialRouteName: 'HomeScreen',
+    headerMode: 'none',
+  }
+)
 
 const AppWithNavigationState = ({ dispatch, nav }) => (
   <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav})} />

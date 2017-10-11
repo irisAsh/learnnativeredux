@@ -5,12 +5,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'stretch',
-    borderWidth: 1,
+    borderBottomWidth: 1,
   },
   title: {
     fontSize: 20,
+    padding: 4,
   },
   description: {
+    fontSize: 12,
+    padding: 4,
   },
 })
 
