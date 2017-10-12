@@ -15,7 +15,9 @@ const LocationList = ({ navigate, locations }) => (
     { Object.keys(locations).map(id => (
         <TouchableOpacity
           key={id}
-          onPress={() => navigate('WeatherDetail')}
+          onPress={() => navigate('WeatherDetail', {
+            headerTitle: locations[id].title,
+          })}
         >
           <View style={styles.itemContainer}>
             <Text style={styles.title}>{locations[id].title}</Text>
@@ -31,7 +33,7 @@ LocationList.propTypes = {
   navigate: PropTypes.func.isRequired,
 }
 const mapDispatchToProps = dispatch => ({
-  navigate: (screen) => dispatch({ type: screen }),
+  navigate: (screen, params) => dispatch({ type: screen, params }),
 })
 
 export default connect(null, mapDispatchToProps)(LocationList)

@@ -11,13 +11,14 @@ const styles = StyleSheet.create({
     color: '#FFFDF9',
     fontSize: 24,
     fontWeight: 'bold',
+    height: 30,
   },
   backConatainer: {
-    marginTop: 4,
+    marginTop: 2,
     alignSelf: 'flex-end',
   },
   backText: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#FFFDF9',
   },
 })

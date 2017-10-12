@@ -9,14 +9,22 @@ import Header from '../Header'
 import styles from './styles'
 import { connect } from 'react-redux'
 
-const WeatherDetail = ({ navigation }) => (
+const WeatherDetail = ({ navigation }) =>
+{
+  console.log(navigation)
+return(
   <View style={styles.container}>
     <Header
-      text='天気検索'
+      text={
+        !!navigation.state.params.headerTitle
+        ? navigation.state.params.headerTitle
+        : '天気詳細'
+      }
       navigation={navigation}
     />
   </View>
 )
+}
 
 WeatherDetail.propTypes = {
   navigation: PropTypes.object.isRequired,

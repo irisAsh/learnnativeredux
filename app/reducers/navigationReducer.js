@@ -17,9 +17,14 @@ const nav = (state = initialNavState, action) => {
       )
       break
     default:
+      console.log('999999999999')
+      console.log(action)
       if (!!AppRoutes[action.type]) {
         nextState = AppNavigator.router.getStateForAction(
-          NavigationActions.navigate({ routeName: action.type }),
+          NavigationActions.navigate({
+            routeName: action.type,
+            params: !!action.params ? action.params : {},
+          }),
           state
         )
       } else {
