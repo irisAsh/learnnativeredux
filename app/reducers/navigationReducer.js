@@ -1,6 +1,7 @@
 import { NavigationActions } from 'react-navigation'
 
-import { AppRoutes, AppNavigator } from '../navigators/AppNavigator'
+import { AppNavigator } from '../navigators/AppNavigator'
+import AppRoutes from '../navigators/AppRoutes'
 
 const firstAction = AppNavigator.router.getActionForPathAndParams('HomeScreen')
 const tempNavState = AppNavigator.router.getStateForAction(firstAction)

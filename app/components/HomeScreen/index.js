@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, ScrollView } from 'react-native'
 
-import { AppRoutes } from '../../navigators/AppNavigator'
+import HomeScreenRoutes from '../../navigators/HomeScreenRoutes'
 import ScreenList from '../../containers/ScreenListContainer'
 import Header from '../Header'
 import styles from './styles'
@@ -13,7 +13,7 @@ const HomeScreen = () => (
       automaticallyAdjustContentInsets={false}
     >
       <ScreenList
-        routes={AppRoutes}
+        routes={HomeScreenRoutes}
       />
     </ScrollView>
   </View>
