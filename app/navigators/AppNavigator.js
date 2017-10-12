@@ -10,7 +10,7 @@ import WeatherApp from '../components/WeatherApp'
 export const AppRoutes = {
   WeatherApp: {
     screen: WeatherApp,
-    title: 'WeatherApp',
+    title: '天気検索',
     description: 'お天気検索アプリサンプル',
   },
   Bookshelf: {

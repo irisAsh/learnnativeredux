@@ -4,13 +4,15 @@ import {
   Button,
   View,
 } from 'react-native'
+
+import Header from '../Header'
 import { connect } from 'react-redux'
 
 const WeatherApp = ({ navigation }) => (
   <View>
-    <Button
-      title='Home'
-      onPress={() => navigation.dispatch({ type: 'Back' })}
+    <Header
+      text='天気検索'
+      navigation={navigation}
     />
   </View>
 )

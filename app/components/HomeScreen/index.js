@@ -8,7 +8,7 @@ import styles from './styles'
 
 const HomeScreen = () => (
   <View style={styles.container}>
-    <Header />
+    <Header text='Learn react redux' />
     <ScrollView
       automaticallyAdjustContentInsets={false}
     >

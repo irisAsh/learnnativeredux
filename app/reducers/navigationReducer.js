@@ -1,6 +1,6 @@
 import { NavigationActions } from 'react-navigation'
 
-import { AppNavigator } from '../navigators/AppNavigator'
+import { AppRoutes, AppNavigator } from '../navigators/AppNavigator'
 
 const firstAction = AppNavigator.router.getActionForPathAndParams('HomeScreen')
 const tempNavState = AppNavigator.router.getStateForAction(firstAction)
@@ -15,14 +15,15 @@ const nav = (state = initialNavState, action) => {
         state
       )
       break
-    case 'Bookshelf':
-      nextState = AppNavigator.router.getStateForAction(
-        NavigationActions.navigate({ routeName: 'Bookshelf'}),
-        state
-      )
-      break
     default:
-      nextState = AppNavigator.router.getStateForAction(action, state)
+      if (!!AppRoutes[action.type]) {
+        nextState = AppNavigator.router.getStateForAction(
+          NavigationActions.navigate({ routeName: action.type }),
+          state
+        )
+      } else {
+        nextState = AppNavigator.router.getStateForAction(action, state)
+      }
       break
   }
 
