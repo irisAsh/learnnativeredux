@@ -8,3 +8,5 @@ export const dateToStrJpn = (date) => {
   format = format.replace(/ss/g, date.getSeconds())
   return format
 }
+
+export const isoToStrJpn = (iso) => dateToStrJpn(new Date(iso))

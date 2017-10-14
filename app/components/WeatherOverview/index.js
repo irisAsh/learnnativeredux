@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 
 import styles from './styles'
-import { dateToStrJpn } from '../../lib/formatTime'
+import { isoToStrJpn } from '../../lib/formatTime'
 
 export default class WeatherOverview extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ export default class WeatherOverview extends Component {
         <View style={styles.itemContainer}>
           <Text style={styles.title}>{this.props.title}</Text>
           <Text style={styles.date}>
-            {dateToStrJpn(new Date(this.props.publicTime))}
+            {isoToStrJpn(this.props.publicTime)}
           </Text>
           <Text
             style={styles.description}
