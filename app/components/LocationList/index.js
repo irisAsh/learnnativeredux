@@ -8,37 +8,23 @@ import {
 } from 'react-native'
 
 import styles from './styles'
+import WeatherOverview from '../WeatherOverview'
 import { dateToStrJpn } from '../../lib/formatTime'
 import { connect } from 'react-redux'
 
 const LocationList = ({ navigate, locations }) => (
   <ScrollView>
-    { Object.keys(locations).map(id =>{
-      console.log(locations[id].publicTime)
-      console.log(new Date(locations[id].publicTime))
-      console.log(dateToStrJpn(new Date(locations[id].publicTime)))
-      return (
-        <TouchableOpacity
+    { Object.keys(locations).map(id => (
+        <WeatherOverview
           key={id}
           onPress={() => navigate('WeatherDetail', {
             headerTitle: locations[id].title,
           })}
-        >
-          <View style={styles.itemContainer}>
-            <Text style={styles.title}>{locations[id].title}</Text>
-            <Text style={styles.date}>
-              {dateToStrJpn(new Date(locations[id].publicTime))}
-            </Text>
-            <Text
-              style={styles.description}
-              numberOfLines={2}
-              ellipsizeMode='tail'
-            >
-              {locations[id].description.text}
-            </Text>
-          </View>
-        </TouchableOpacity>
-      )})
+          title={locations[id].title}
+          publicTime={locations[id].publicTime}
+          description={locations[id].description.text}
+        />
+      ))
     }
   </ScrollView>
 )
