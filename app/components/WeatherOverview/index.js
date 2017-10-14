@@ -53,6 +53,14 @@ export default class WeatherOverview extends Component {
   }
 }
 
+WeatherOverview.propTypes = {
+  title: PropTypes.string.isRequired,
+  publicTime: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  onAccordion: PropTypes.bool,
+  onPress: PropTypes.func,
+}
+
 WeatherOverview.defaultProps = {
   onAccordion: false,
 }
