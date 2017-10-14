@@ -11,6 +11,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     padding: 4,
   },
+  date: {
+    fontSize: 10,
+    paddingLeft: 8,
+    color: '#9B9B9B',
+  },
   description: {
     fontSize: 12,
     padding: 4,
