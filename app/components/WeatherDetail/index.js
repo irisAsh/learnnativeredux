@@ -2,10 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {
   Button,
+  ScrollView,
   View,
 } from 'react-native'
 
 import styles from './styles'
+import DailyWeather from '../DailyWeather'
 import Header from '../Header'
 import WeatherOverview from '../WeatherOverview'
 import { connect } from 'react-redux'
@@ -75,10 +77,7 @@ const exampleData = {
    ],
 }
 
-const WeatherDetail = ({ navigation }) =>
-{
-  console.log(navigation)
-return(
+const WeatherDetail = ({ navigation }) => (
   <View style={styles.container}>
     <Header
       text={
@@ -88,15 +87,17 @@ return(
       }
       navigation={navigation}
     />
-    <WeatherOverview
-      title={exampleData.title}
-      publicTime={exampleData.publicTime}
-      description={exampleData.description.text}
-      onAccordion={true}
-    />
+    <ScrollView>
+      <WeatherOverview
+        title={exampleData.title}
+        publicTime={exampleData.publicTime}
+        description={exampleData.description.text}
+        onAccordion={true}
+      />
+      <DailyWeather />
+    </ScrollView>
   </View>
 )
-}
 
 WeatherDetail.propTypes = {
   navigation: PropTypes.object.isRequired,
