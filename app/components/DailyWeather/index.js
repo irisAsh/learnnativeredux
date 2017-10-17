@@ -8,11 +8,14 @@ import {
 import styles from './styles'
 import WeatherInDay from '../WeatherInDay'
 
-const DailyWeather = () => (
+const DailyWeather = ({ forecasts }) => (
   <View style={styles.container}>
-    <WeatherInDay />
-    <WeatherInDay />
-    <WeatherInDay />
+    { forecasts.map((forecast, index) => (
+      <WeatherInDay
+        {...forecast}
+        key={index}
+      />
+    ))}
   </View>
 )
 

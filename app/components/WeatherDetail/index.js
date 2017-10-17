@@ -94,7 +94,9 @@ const WeatherDetail = ({ navigation }) => (
         description={exampleData.description.text}
         onAccordion={true}
       />
-      <DailyWeather />
+      <DailyWeather
+        forecasts={exampleData.forecasts}
+      />
     </ScrollView>
   </View>
 )
