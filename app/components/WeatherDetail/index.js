@@ -9,6 +9,7 @@ import {
 import styles from './styles'
 import DailyWeather from '../DailyWeather'
 import Header from '../Header'
+import LocaleWeatherLinks from '../LocaleWeatherLinks'
 import WeatherOverview from '../WeatherOverview'
 import { connect } from 'react-redux'
 
@@ -75,6 +76,68 @@ const exampleData = {
          }
       }
    ],
+   "pinpointLocations" : [
+      {
+         "link" : "http://weather.livedoor.com/area/forecast/4020200",
+         "name" : "大牟田市"
+      },
+      {
+         "link" : "http://weather.livedoor.com/area/forecast/4020300",
+         "name" : "久留米市"
+      },
+      {
+         "link" : "http://weather.livedoor.com/area/forecast/4020700",
+         "name" : "柳川市"
+      },
+      {
+         "link" : "http://weather.livedoor.com/area/forecast/4021000",
+         "name" : "八女市"
+      },
+      {
+         "link" : "http://weather.livedoor.com/area/forecast/4021100",
+         "name" : "筑後市"
+      },
+      {
+         "link" : "http://weather.livedoor.com/area/forecast/4021200",
+         "name" : "大川市"
+      },
+      {
+         "link" : "http://weather.livedoor.com/area/forecast/4021600",
+         "name" : "小郡市"
+      },
+      {
+         "link" : "http://weather.livedoor.com/area/forecast/4022500",
+         "name" : "うきは市"
+      },
+      {
+         "link" : "http://weather.livedoor.com/area/forecast/4022800",
+         "name" : "朝倉市"
+      },
+      {
+         "link" : "http://weather.livedoor.com/area/forecast/4022900",
+         "name" : "みやま市"
+      },
+      {
+         "link" : "http://weather.livedoor.com/area/forecast/4044700",
+         "name" : "筑前町"
+      },
+      {
+         "link" : "http://weather.livedoor.com/area/forecast/4044800",
+         "name" : "東峰村"
+      },
+      {
+         "link" : "http://weather.livedoor.com/area/forecast/4050300",
+         "name" : "大刀洗町"
+      },
+      {
+         "link" : "http://weather.livedoor.com/area/forecast/4052200",
+         "name" : "大木町"
+      },
+      {
+         "link" : "http://weather.livedoor.com/area/forecast/4054400",
+         "name" : "広川町"
+      }
+   ],
 }
 
 const WeatherDetail = ({ navigation }) => (
@@ -96,6 +159,9 @@ const WeatherDetail = ({ navigation }) => (
       />
       <DailyWeather
         forecasts={exampleData.forecasts}
+      />
+      <LocaleWeatherLinks
+        links={exampleData.pinpointLocations}
       />
     </ScrollView>
   </View>
