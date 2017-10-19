@@ -4,9 +4,14 @@ import WeatherDetail from '../components/WeatherDetail'
 import * as api from '../api'
 import * as Actions from '../actions/weatherAppActionCreator'
 
+const mapStateToProps = state => ({
+  isFetching: state.weatherApp.isFetching,
+  isError: state.weatherApp.isError,
+  info: state.weatherApp.info,
+})
+
 const mapDispatchToProps = dispatch => ({
   fetchWeatherDetail: async (id) => {
-    console.log('-----=============')
     dispatch(Actions.fetchDetail())
     const response = await api.fetchWeatherDetail(id)
     if (!response.ok) {
@@ -21,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(null, mapDispatchToProps)(WeatherDetail)
+export default connect(mapStateToProps, mapDispatchToProps)(WeatherDetail)
