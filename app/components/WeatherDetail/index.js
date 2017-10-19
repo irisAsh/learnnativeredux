@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {
   Button,
@@ -140,32 +140,47 @@ const exampleData = {
    ],
 }
 
-const WeatherDetail = ({ navigation }) => (
-  <View style={styles.container}>
-    <Header
-      text={
-        !!navigation.state.params.headerTitle
-        ? navigation.state.params.headerTitle
-        : '天気詳細'
-      }
-      navigation={navigation}
-    />
-    <ScrollView>
-      <WeatherOverview
-        title={exampleData.title}
-        publicTime={exampleData.publicTime}
-        description={exampleData.description.text}
-        onAccordion={true}
-      />
-      <DailyWeather
-        forecasts={exampleData.forecasts}
-      />
-      <LocaleWeatherLinks
-        links={exampleData.pinpointLocations}
-      />
-    </ScrollView>
-  </View>
-)
+class WeatherDetail extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentWillMount() {
+    console.log('uuuuuuuuuuuuu')
+    console.log(this.props)
+    this.props.fetchWeatherDetail('400040')
+  }
+
+  render() {
+    const { navigation } = this.props
+    return (
+      <View style={styles.container}>
+        <Header
+          text={
+            !!navigation.state.params.headerTitle
+            ? navigation.state.params.headerTitle
+            : '天気詳細'
+          }
+          navigation={navigation}
+        />
+        <ScrollView>
+          <WeatherOverview
+            title={exampleData.title}
+            publicTime={exampleData.publicTime}
+            description={exampleData.description.text}
+            onAccordion={true}
+          />
+          <DailyWeather
+            forecasts={exampleData.forecasts}
+          />
+          <LocaleWeatherLinks
+            links={exampleData.pinpointLocations}
+          />
+        </ScrollView>
+      </View>
+    )
+  }
+}
 
 WeatherDetail.propTypes = {
   navigation: PropTypes.object.isRequired,
@@ -175,4 +190,4 @@ WeatherDetail.navigationOptions = {
   header: null,
 }
 
-export default connect()(WeatherDetail)
+export default WeatherDetail

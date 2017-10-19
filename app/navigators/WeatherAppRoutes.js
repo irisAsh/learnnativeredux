@@ -1,4 +1,4 @@
-import WeatherDetail from '../components/WeatherDetail'
+import WeatherDetail from '../containers/WeatherDetailContainer'
 
 const WeatherAppRoutes = {
   WeatherDetail: {
