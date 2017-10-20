@@ -3,7 +3,13 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderWidth: 1,
+    backgroundColor: '#FFFFFF',
+  },
+  sideBorderOn: {
+    borderLeftWidth: 2,
+    borderLeftColor: '#B3B7F2',
+    borderRightWidth: 2,
+    borderRightColor: '#B3B7F2',
   },
   dateLabelContainer: {
     flex: 1,
@@ -11,6 +17,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 4,
     paddingBottom: 4,
+    backgroundColor: '#E8E9FF',
+    borderTopWidth: 2,
+    borderTopColor: '#B3B7F2',
+    borderBottomWidth: 2,
+    borderBottomColor: '#B3B7F2',
   },
   dateLabelText: {
     fontSize: 18,

@@ -21,8 +21,11 @@ TemperatureBox.propTypes = {
   number: PropTypes.string.isRequired,
 }
 
-const WeatherInDay = ({ dateLabel, date, telop, temperature, image }) => (
-  <View style={styles.container}>
+const WeatherInDay = ({ dateLabel, date, telop, temperature, image, sideBorderOn }) => (
+  <View style={[
+    styles.container,
+    sideBorderOn && styles.sideBorderOn,
+  ]}>
     <View style={styles.dateLabelContainer}>
       <Text style={styles.dateLabelText}>{dateLabel}</Text>
     </View>
@@ -64,6 +67,11 @@ WeatherInDay.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
   }).isRequired,
+  sideBorderOn: PropTypes.bool,
+}
+
+WeatherInDay.defaultProps = {
+  sideBorderOn: true,
 }
 
 export default WeatherInDay

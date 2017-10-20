@@ -14,6 +14,7 @@ const DailyWeather = ({ forecasts }) => (
       <WeatherInDay
         {...forecast}
         key={index}
+        sideBorderOn={index % 2 === 0}
       />
     ))}
   </View>
