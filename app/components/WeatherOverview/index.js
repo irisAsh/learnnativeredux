@@ -34,7 +34,7 @@ export default class WeatherOverview extends Component {
           </Text>
           <Text
             style={styles.description}
-            numberOfLines={ this.state.openAccordion ? 0 : 2 }
+            numberOfLines={ this.state.openAccordion ? 0 : this.props.numberOfLines }
             ellipsizeMode='tail'
           >
             {this.props.description}
@@ -57,10 +57,12 @@ WeatherOverview.propTypes = {
   title: PropTypes.string.isRequired,
   publicTime: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  numberOfLines: PropTypes.number,
   onAccordion: PropTypes.bool,
   onPress: PropTypes.func,
 }
 
 WeatherOverview.defaultProps = {
+  numberOfLines: 2,
   onAccordion: false,
 }

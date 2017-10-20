@@ -43,14 +43,15 @@ class WeatherDetail extends Component {
         if (!!info && Object.keys(info).length !== 0) {
           return (
             <ScrollView>
+              <DailyWeather
+                forecasts={info.forecasts}
+              />
               <WeatherOverview
                 title={info.title}
                 publicTime={info.publicTime}
                 description={info.description.text}
-                onAccordion={true}
-              />
-              <DailyWeather
-                forecasts={info.forecasts}
+                numberOfLines={0}
+                onAccordion={false}
               />
               <LocaleWeatherLinks
                 links={info.pinpointLocations}
