@@ -75,6 +75,7 @@ class WeatherDetail extends Component {
             ? navigation.state.params.headerTitle
             : '天気詳細'
           }
+          containerColor='#4CA8FF'
           navigation={navigation}
         />
         {renderMainScene()}

@@ -25,6 +25,7 @@ const WeatherApp = ({ navigation }) => (
   <View style={styles.container}>
     <Header
       text='天気検索'
+      containerColor='#4CA8FF'
       navigation={navigation}
     />
     <LocationList
