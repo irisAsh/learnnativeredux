@@ -1,4 +1,4 @@
-import WeatherApp from '../components/WeatherApp'
+import WeatherApp from '../containers/WeatherAppContainer'
 import Bookshelf from '../components/Bookshelf'
 
 const HomeScreenRoutes = {

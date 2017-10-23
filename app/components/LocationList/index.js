@@ -14,17 +14,19 @@ import { connect } from 'react-redux'
 
 const LocationList = ({ navigate, locations }) => (
   <ScrollView>
-    { Object.keys(locations).map(id => (
+    { Object.keys(locations).map(id => {
+      let info = locations[id].info
+      return (
         <WeatherOverview
           key={id}
           onPress={() => navigate('WeatherDetail', {
-            headerTitle: locations[id].title,
+            headerTitle: info.title,
           })}
-          title={locations[id].title}
-          publicTime={locations[id].publicTime}
-          description={locations[id].description.text}
+          title={info.title}
+          publicTime={info.publicTime}
+          description={info.description.text}
         />
-      ))
+      )})
     }
   </ScrollView>
 )

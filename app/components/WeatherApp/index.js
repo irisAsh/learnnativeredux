@@ -1,14 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Button,
+  Text,
   View,
 } from 'react-native'
 
 import Header from '../Header'
 import LocationList from '../LocationList'
 import styles from './styles'
-import { connect } from 'react-redux'
 
 const exampleData = {
   "400040" : {
@@ -21,18 +20,45 @@ const exampleData = {
   }
 }
 
-const WeatherApp = ({ navigation }) => (
-  <View style={styles.container}>
-    <Header
-      text='天気検索'
-      containerColor='#4CA8FF'
-      navigation={navigation}
-    />
-    <LocationList
-      locations={exampleData}
-    />
-  </View>
-)
+class WeatherApp extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentWillMount() {
+    this.props.fetchPrimaryArea()
+  }
+
+  render() {
+    const { navigation, data } = this.props
+    console.log('////////////////')
+    console.log(this.props)
+    console.log(data)
+    const renderList = () => {
+      if (Object.keys(data).length > 0) {
+        return (
+          <LocationList
+            locations={data}
+          />
+        )
+      } else {
+        return (
+          <Text>No Data</Text>
+        )
+      }
+    }
+    return (
+      <View style={styles.container}>
+        <Header
+          text='天気検索'
+          containerColor='#4CA8FF'
+          navigation={navigation}
+        />
+        { renderList() }
+      </View>
+    )
+  }
+}
 
 WeatherApp.propTypes = {
   navigation: PropTypes.object.isRequired,
@@ -42,4 +68,4 @@ WeatherApp.navigationOptions = {
   header: null,
 }
 
-export default connect()(WeatherApp)
+export default WeatherApp
