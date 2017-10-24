@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Button,
   ScrollView,
-  Text,
   View,
 } from 'react-native'
 
@@ -12,80 +10,39 @@ import DailyWeather from '../DailyWeather'
 import Header from '../Header'
 import LocaleWeatherLinks from '../LocaleWeatherLinks'
 import WeatherOverview from '../WeatherOverview'
-import { connect } from 'react-redux'
 
-class WeatherDetail extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  componentWillMount() {
-    console.log(this.props)
-    this.props.fetchWeatherDetail('400040')
-  }
-
-  render() {
-    const { navigation, isFetching, isError, info } = this.props
-    const renderMainScene = () => {
-      if (isFetching) {
-        return (
-          <ScrollView>
-            <Text>Loading</Text>
-          </ScrollView>
-        )
-      } else if (isError) {
-        return (
-          <ScrollView>
-            <Text>Error</Text>
-          </ScrollView>
-        )
-      } else {
-        if (!!info && Object.keys(info).length !== 0) {
-          return (
-            <ScrollView>
-              <DailyWeather
-                forecasts={info.forecasts}
-              />
-              <WeatherOverview
-                title={info.title}
-                publicTime={info.publicTime}
-                description={info.description.text}
-                numberOfLines={0}
-                onAccordion={false}
-              />
-              <LocaleWeatherLinks
-                links={info.pinpointLocations}
-              />
-            </ScrollView>
-          )
-        } else {
-          return (
-            <ScrollView>
-              <Text>No Data</Text>
-            </ScrollView>
-          )
-        }
-      }
-    }
-    return (
-      <View style={styles.container}>
-        <Header
-          text={
-            !!navigation.state.params.headerTitle
-            ? navigation.state.params.headerTitle
-            : '天気詳細'
-          }
-          containerColor='#4CA8FF'
-          navigation={navigation}
+const WeatherDetail = ({ navigation, data }) => {
+  const id = navigation.state.params.id
+  const info = data[id].info
+  return (
+    <View style={styles.container}>
+      <Header
+        text={info.title}
+        containerColor='#4CA8FF'
+        navigation={navigation}
+      />
+      <ScrollView>
+        <DailyWeather
+          forecasts={info.forecasts}
         />
-        {renderMainScene()}
-      </View>
-    )
-  }
+        <WeatherOverview
+          title={info.title}
+          publicTime={info.publicTime}
+          description={info.description.text}
+          numberOfLines={0}
+          onAccordion={false}
+        />
+        <LocaleWeatherLinks
+          links={info.pinpointLocations}
+        />
+      </ScrollView>
+    </View>
+  )
 }
 
 WeatherDetail.propTypes = {
   navigation: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 }
 
 WeatherDetail.navigationOptions = {

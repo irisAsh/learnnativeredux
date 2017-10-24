@@ -2,15 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {
   ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
 } from 'react-native'
 
 import styles from './styles'
 import WeatherOverview from '../WeatherOverview'
-import { dateToStrJpn } from '../../lib/formatTime'
-import { connect } from 'react-redux'
 
 const LocationList = ({ navigate, locations }) => (
   <ScrollView>
@@ -19,9 +14,7 @@ const LocationList = ({ navigate, locations }) => (
       return (
         <WeatherOverview
           key={id}
-          onPress={() => navigate('WeatherDetail', {
-            headerTitle: info.title,
-          })}
+          onPress={() => navigate('WeatherDetail', { id })}
           title={info.title}
           publicTime={info.publicTime}
           description={info.description.text}
@@ -33,9 +26,7 @@ const LocationList = ({ navigate, locations }) => (
 
 LocationList.propTypes = {
   navigate: PropTypes.func.isRequired,
+  locations: PropTypes.object.isRequired,
 }
-const mapDispatchToProps = dispatch => ({
-  navigate: (screen, params) => dispatch({ type: screen, params }),
-})
 
-export default connect(null, mapDispatchToProps)(LocationList)
+export default LocationList

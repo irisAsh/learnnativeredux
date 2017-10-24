@@ -6,7 +6,7 @@ import {
 } from 'react-native'
 
 import Header from '../Header'
-import LocationList from '../LocationList'
+import LocationList from '../../containers/LocationListContainer'
 import styles from './styles'
 import * as CONSTANTS from '../../constants/weatherAppConstants'
 
