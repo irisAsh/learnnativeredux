@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
   isFetching: state.primaryArea.isFetching,
   isError: state.primaryArea.isError,
   data: state.primaryArea.data,
+  updateDate: state.primaryArea.updateDate,
 })
 
 const mapDispatchToProps = dispatch => ({

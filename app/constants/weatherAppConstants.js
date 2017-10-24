@@ -1,4 +1,9 @@
 /*
+ * constant
+ */
+export const FETCH_INTERVAL = 60 * 60 * 1000
+
+/*
  * Action type
  */
 export const FETCH_PRIMARY_AREA = Symbol('FETCH_PRIMARY_AREA')

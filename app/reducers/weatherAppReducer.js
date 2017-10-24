@@ -4,6 +4,7 @@ const initailPrimaryAreaState = {
   isFetching: false,
   isError: false,
   data: {},
+  updateDate: new Date(0),
 }
 
 export const primaryArea = (state = initailPrimaryAreaState, action) => {
@@ -26,6 +27,7 @@ export const primaryArea = (state = initailPrimaryAreaState, action) => {
         ...state,
         isFetching: false,
         isError: false,
+        updateDate: new Date(),
       }
     case types.FETCH_LOCALE_WEATHER_SUCCESS:
       let datus = {}
@@ -33,12 +35,10 @@ export const primaryArea = (state = initailPrimaryAreaState, action) => {
         isFetching: true,
         info: action.info,
       }
-      let rrrr = {
+      return {
         ...state,
         data: Object.assign({}, state.data, datus)
       }
-      console.log(rrrr)
-      return rrrr
     default:
       return state
   }
