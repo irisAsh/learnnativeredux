@@ -16,7 +16,8 @@ class WeatherApp extends Component {
   }
 
   componentWillMount() {
-    let { updateDate, fetchPrimaryArea } = this.props
+    let { updateDate, fetchPrimaryArea, initializeRealm } = this.props
+    initializeRealm()
     console.log(updateDate)
     if (Date.now() - Date.parse(updateDate) > CONSTANTS.FETCH_INTERVAL) {
       fetchPrimaryArea()

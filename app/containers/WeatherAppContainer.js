@@ -4,6 +4,7 @@ import { DOMParser } from 'xmldom'
 import WeatherApp from '../components/WeatherApp'
 import * as api from '../api'
 import * as Actions from '../actions/weatherAppActionCreator'
+import * as realmActions from '../actions/realmActionCreator'
 
 const mapStateToProps = state => ({
   isFetching: state.primaryArea.isFetching,
@@ -55,7 +56,10 @@ const mapDispatchToProps = dispatch => ({
         }
       }
     }
-  }
+  },
+  initializeRealm: () => {
+    dispatch(realmActions.initializeRealm())
+  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(WeatherApp)
