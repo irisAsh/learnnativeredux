@@ -1,6 +1,8 @@
 package com.learnnativeredux;
 
 import com.facebook.react.ReactActivity;
+import io.realm.react.RealmReactPackage;
+import com.rnfs.RNFSPackage;
 
 public class MainActivity extends ReactActivity {
 
