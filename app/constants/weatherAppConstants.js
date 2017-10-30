@@ -6,6 +6,8 @@ export const FETCH_INTERVAL = 60 * 60 * 1000
 /*
  * Action type
  */
+export const INITIALIZE_REALM = Symbol('INITIALIZE_REALM')
+
 export const FETCH_PRIMARY_AREA = Symbol('FETCH_PRIMARY_AREA')
 export const FETCH_PRIMARY_AREA_SUCCESS = Symbol('FETCH_PRIMARY_AREA_SUCCESS')
 export const FETCH_PRIMARY_AREA_FAILED = Symbol('FETCH_PRIMARY_AREA_FAILED')

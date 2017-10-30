@@ -7,17 +7,16 @@ import {
 import styles from './styles'
 import WeatherOverview from '../WeatherOverview'
 
-const LocationList = ({ navigate, locations }) => (
+const LocationList = ({ navigate, weathers }) => (
   <ScrollView>
-    { Object.keys(locations).map(id => {
-      let info = locations[id].info
+    { weathers.map(weather => {
       return (
         <WeatherOverview
-          key={id}
-          onPress={() => navigate('WeatherDetail', { id })}
-          title={info.title}
-          publicTime={info.publicTime}
-          description={info.description.text}
+          key={weather.cityId}
+          onPress={() => navigate('WeatherDetail', { id: weather.cityId })}
+          title={weather.title}
+          publicTime={weather.publicTime}
+          description={weather.description}
         />
       )})
     }
@@ -26,7 +25,7 @@ const LocationList = ({ navigate, locations }) => (
 
 LocationList.propTypes = {
   navigate: PropTypes.func.isRequired,
-  locations: PropTypes.object.isRequired,
+  weathers: PropTypes.object.isRequired,
 }
 
 export default LocationList

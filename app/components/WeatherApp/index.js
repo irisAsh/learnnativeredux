@@ -25,19 +25,26 @@ class WeatherApp extends Component {
   }
 
   render() {
-    const { navigation, data } = this.props
-    console.log(data)
+    const { navigation, realm } = this.props
     const renderList = () => {
-      if (Object.keys(data).length > 0) {
-        return (
-          <LocationList
-            locations={data}
-          />
-        )
+      if (!!realm) {
+        let weathers = realm.objects('Weather').sorted('cityId', true)
+        console.log(weathers)
+        if (weathers.length != 0) {
+          return (
+            <LocationList
+              weathers={weathers}
+            />
+          )
+        } else {
+          return (
+            <Text>No Data</Text>
+          )
+        }
       } else {
-        return (
-          <Text>No Data</Text>
-        )
+          return (
+            <Text>No Data</Text>
+          )
       }
     }
     return (
