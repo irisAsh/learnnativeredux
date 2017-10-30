@@ -74,7 +74,7 @@ const registerLocaleWeather = (cityId, info, realm) => {
 
       info.forecasts.forEach((elem, index) => {
         let id = cityId + index
-        weather.forecasts.push({
+        let forecast = realm.create('Forecast', {
           id: id,
           cityId: cityId,
           index: index,
@@ -93,17 +93,19 @@ const registerLocaleWeather = (cityId, info, realm) => {
             minCelsius: elem.temperature.min ? elem.temperature.min.celsius : '',
             minFahrenheit: elem.temperature.min ? elem.temperature.min.fahrenheit : '',
           },
-        })
+        }, true)
+        weather.forecasts.push(forecast)
       })
 
       info.pinpointLocations.forEach((elem) => {
         let matches = elem.link.match(/.*forecast\/(\d+)/)
         let linkId = matches[1]
-        weather.pinpointLocations.push({
+        let pinpointLocation = realm.create('PinpointLocation', {
           cityId: linkId,
           link: elem.link,
           name: elem.name,
-        })
+        }, true)
+        weather.pinpointLocations.push(pinpointLocation)
       })
     })
     return true
