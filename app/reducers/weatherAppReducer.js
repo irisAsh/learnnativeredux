@@ -72,6 +72,7 @@ const registerLocaleWeather = (cityId, info, realm) => {
         description: info.description.text,
       }, true)
 
+      realm.delete(weather.forecasts)
       info.forecasts.forEach((elem, index) => {
         let id = cityId + index
         let forecast = realm.create('Forecast', {
@@ -97,6 +98,7 @@ const registerLocaleWeather = (cityId, info, realm) => {
         weather.forecasts.push(forecast)
       })
 
+      realm.delete(weather.pinpointLocations)
       info.pinpointLocations.forEach((elem) => {
         let matches = elem.link.match(/.*forecast\/(\d+)/)
         let linkId = matches[1]

@@ -21,7 +21,16 @@ TemperatureBox.propTypes = {
   number: PropTypes.string.isRequired,
 }
 
-const WeatherInDay = ({ dateLabel, date, telop, temperature, image, sideBorderOn }) => (
+const WeatherInDay = ({
+  dateLabel,
+  date,
+  telop,
+  temperature,
+  imageWidth,
+  imageHeight,
+  imageUrl,
+  sideBorderOn
+}) => (
   <View style={[
     styles.container,
     sideBorderOn && styles.sideBorderOn,
@@ -35,21 +44,21 @@ const WeatherInDay = ({ dateLabel, date, telop, temperature, image, sideBorderOn
     <Image
       style={[
         styles.img,
-        image.width && {width: image.width},
-        image.height && {height: image.height},
+        imageWidth && {width: imageWidth},
+        imageHeight && {height: imageHeight},
       ]}
-      source={{uri: image.url}}
+      source={{uri: imageUrl}}
     />
     <View style={styles.weatherContainer}>
       <Text style={styles.weatherText}>{telop}</Text>
     </View>
     <TemperatureBox
       label='最高気温'
-      number={!!temperature.max ? temperature.max.celsius : '-'}
+      number={!!temperature.maxCelsius ? temperature.maxCelsius : '-'}
     />
     <TemperatureBox
       label='最低気温'
-      number={!!temperature.min ? temperature.min.celsius : '-'}
+      number={!!temperature.minCelsius ? temperature.minCelsius : '-'}
     />
   </View>
 )
@@ -59,14 +68,12 @@ WeatherInDay.propTypes = {
   date: PropTypes.string.isRequired,
   telop: PropTypes.string.isRequired,
   temperature: PropTypes.shape({
-    max: PropTypes.shape({ celsius: PropTypes.string }),
-    min: PropTypes.shape({ celsius: PropTypes.string }),
+    maxCelsius: PropTypes.string,
+    minCelsius: PropTypes.string,
   }).isRequired,
-  image: PropTypes.shape({
-    uri: PropTypes.string,
-    width: PropTypes.number,
-    height: PropTypes.number,
-  }).isRequired,
+  imageWidth: PropTypes.number.isRequired,
+  imageHeight: PropTypes.number.isRequired,
+  imageUrl: PropTypes.string.isRequired,
   sideBorderOn: PropTypes.bool,
 }
 
